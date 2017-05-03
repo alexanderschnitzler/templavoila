@@ -564,7 +564,7 @@ class SheetRenderer implements Renderable
             ];
 
             $columns[$fieldID] = [
-                'title' => $column->getTitle(),
+                'title' => static::getLanguageService()->sL($column->getTitle()),
                 'content' => $this->renderColumn(
                     $column,
                     $subElementPointer,
