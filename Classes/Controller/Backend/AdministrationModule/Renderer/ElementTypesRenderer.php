@@ -86,6 +86,10 @@ class ElementTypesRenderer implements SingletonInterface
             /* ---------------------------------------------------------------------- */
             if ($elArray[$key]['type'] === 'array') { // If array, then unset:
                 unset($elArray[$key]['tx_templavoila']['sample_data']);
+                if (isset($elArray[$key]['tx_templavoila']['title'])) {
+                    //containers have their title there
+                    $elArray[$key]['title'] = $elArray[$key]['tx_templavoila']['title'];
+                }
             } else { // Only non-arrays can have configuration (that is elements and attributes)
 
                 // Getting some information about the HTML content (eg. images width/height if applicable)
