@@ -614,6 +614,9 @@ class DataStructureEditor
         /*
          * type select field
          */
+        if (isset($insertDataArray['section']) && !isset($insertDataArray['tx_templavoila']['type'])) {
+            $insertDataArray['tx_templavoila']['type'] = 'section';
+        }
         $array['input']['type'] = [
             'label' => 'Type',
             'html' => $this->renderTypeSelectField($formFieldName, $insertDataArray['tx_templavoila']['type'])
