@@ -168,7 +168,7 @@ class DataStructureEditor
             $array['rows'][$rowIndex]['buttons'] = [];
             $array['rows'][$rowIndex]['isInEditMode'] = $this->isModeEnabled(static::MODE_EDIT);
             $array['rows'][$rowIndex]['isInMappingMode'] = $this->isModeEnabled(static::MODE_MAPPING);
-            $array['rows'][$rowIndex]['isContainer'] = $value['type'] === 'array';
+            $array['rows'][$rowIndex]['isContainer'] = in_array($type, array('sc', 'co')) ;
             $array['rows'][$rowIndex]['type'] = $type;
             $array['rows'][$rowIndex]['key'] = $key;
             $array['rows'][$rowIndex]['icon'] = [
@@ -346,7 +346,7 @@ class DataStructureEditor
 //                        $rowCells['cmdLinks'] .= '<br />
 //                                <a class="btn btn-default btn-sm" href="' . $cancelUrl . '">' . static::getLanguageService()->getLL('buttonCancel') . '</a>';
                     }
-                } elseif ($mapOK && $value['type'] !== 'no_map' && empty($array['rows'][$rowIndex]['buttons'])) {
+                } elseif ($mapOK && $type !== 'no' && empty($array['rows'][$rowIndex]['buttons'])) {
                     $array['rows'][$rowIndex]['buttons'][] = [
                         'url' => $this->controller->getModuleUrl([
                                 'mapElPath' => $formPrefix . '[' . $key . ']',
@@ -394,7 +394,7 @@ class DataStructureEditor
 
             $array['rows'][$rowIndex]['form']['edit'] = $this->drawDataStructureMap_editItem($formPrefix, $key, $value);
 
-            if ($value['type'] === 'array') {
+            if (in_array($type, array('sc', 'co'))) {
                 if (!$this->mapElPath) {
                     $array['rows'][$rowIndex]['form']['create'] = [
                         'action' => $this->controller->getModuleUrl([
@@ -445,9 +445,9 @@ class DataStructureEditor
     public function drawDataStructureMap_editItem($formPrefix, $key, $value)
     {
         $return = [];
-
+        $type = $this->dsTypeInfo($value);
         if ($this->DS_element !== $formPrefix . '[' . $key . ']') {
-            if (!$this->mapElPath && ($value['type'] === 'array' || $value['type'] === 'section')) {
+            if (!$this->mapElPath && (in_array($type, array('sc', 'co')))) {
                 // todo: edit this
                 $addEditRows = '<tr class="bgColor4">
                 <td colspan="7">' .
@@ -556,6 +556,9 @@ class DataStructureEditor
      */
     private function dsTypeInfo($conf)
     {
+        if ($conf['type'] === 'array' && !empty($conf['section'])) {
+            return 'sc';
+        }
         if ($conf['tx_templavoila']['type'] === 'section') {
             return 'sc';
         }
