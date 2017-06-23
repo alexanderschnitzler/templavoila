@@ -745,7 +745,7 @@ class ElementController extends AbstractModuleController implements Configurable
                 unset($value['type'], $value['section']);
 
                 if ($value['tx_templavoila']['type'] === 'section') {
-                    $value['section'] = 1;
+                    $value['section'] = '1';
 
                     /*
                      * Whenever a section is created/updated and it does not have any children,
