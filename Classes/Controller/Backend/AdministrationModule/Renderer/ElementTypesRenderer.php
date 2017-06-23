@@ -110,11 +110,11 @@ class ElementTypesRenderer implements SingletonInterface
                 } else {
                     $eTypes = static::defaultEtypes();
                     $eType = $elArray[$key]['tx_templavoila']['eType'];
+                    $elArray[$key]['TCEforms']['label'] = $elArray[$key]['tx_templavoila']['title'];
                     switch ($eType) {
                         case 'text':
                             /* preserve previous config, if of the right kind */
                             if ($reset || ($elArray[$key]['TCEforms']['config']['type'] !== 'text')) {
-                                $elArray[$key]['TCEforms']['label'] = $elArray[$key]['tx_templavoila']['title'];
                                 $elArray[$key]['TCEforms']['config'] = $eTypes['eType'][$eType]['TCEforms']['config'];
                             }
 
@@ -126,7 +126,6 @@ class ElementTypesRenderer implements SingletonInterface
                         case 'rte':
                             /* preserve previous config, if of the right kind */
                             if ($reset || ($elArray[$key]['TCEforms']['config']['type'] !== 'text')) {
-                                $elArray[$key]['TCEforms']['label'] = $elArray[$key]['tx_templavoila']['title'];
                                 $elArray[$key]['TCEforms']['config'] = $eTypes['eType'][$eType]['TCEforms']['config'];
                             }
 
@@ -148,7 +147,6 @@ class ElementTypesRenderer implements SingletonInterface
                         case 'imagefixed':
                             /* preserve previous config, if of the right kind */
                             if ($reset || ($elArray[$key]['TCEforms']['config']['type'] !== 'group')) {
-                                $elArray[$key]['TCEforms']['label'] = $elArray[$key]['tx_templavoila']['title'];
                                 $elArray[$key]['TCEforms']['config'] = $eTypes['eType'][$eType]['TCEforms']['config'];
                             }
 
@@ -190,7 +188,6 @@ class ElementTypesRenderer implements SingletonInterface
                         case 'link':
                             /* preserve previous config, if of the right kind */
                             if ($reset || ($elArray[$key]['TCEforms']['config']['type'] !== 'input')) {
-                                $elArray[$key]['TCEforms']['label'] = $elArray[$key]['tx_templavoila']['title'];
                                 $elArray[$key]['TCEforms']['config'] = $eTypes['eType'][$eType]['TCEforms']['config'];
                             }
 
@@ -212,7 +209,6 @@ class ElementTypesRenderer implements SingletonInterface
                         case 'ce':
                             /* preserve previous config, if of the right kind */
                             if ($reset || ($elArray[$key]['TCEforms']['config']['type'] !== 'group')) {
-                                $elArray[$key]['TCEforms']['label'] = $elArray[$key]['tx_templavoila']['title'];
                                 $elArray[$key]['TCEforms']['config'] = $eTypes['eType'][$eType]['TCEforms']['config'];
                             }
 
@@ -231,7 +227,6 @@ class ElementTypesRenderer implements SingletonInterface
                         case 'int':
                             /* preserve previous config, if of the right kind */
                             if ($reset || ($elArray[$key]['TCEforms']['config']['type'] !== 'input')) {
-                                $elArray[$key]['TCEforms']['label'] = $elArray[$key]['tx_templavoila']['title'];
                                 $elArray[$key]['TCEforms']['config'] = $eTypes['eType'][$eType]['TCEforms']['config'];
                             }
                             if ($reset) {
@@ -242,7 +237,6 @@ class ElementTypesRenderer implements SingletonInterface
                         case 'select':
                             /* preserve previous config, if of the right kind */
                             if ($reset || ($elArray[$key]['TCEforms']['config']['type'] !== 'select')) {
-                                $elArray[$key]['TCEforms']['label'] = $elArray[$key]['tx_templavoila']['title'];
                                 $elArray[$key]['TCEforms']['config'] = $eTypes['eType'][$eType]['TCEforms']['config'];
                             }
                             if ($reset) {
@@ -252,7 +246,6 @@ class ElementTypesRenderer implements SingletonInterface
                         case 'check':
                             /* preserve previous config, if of the right kind */
                             if ($reset || ($elArray[$key]['TCEforms']['config']['type'] !== 'check')) {
-                                $elArray[$key]['TCEforms']['label'] = $elArray[$key]['tx_templavoila']['title'];
                                 $elArray[$key]['TCEforms']['config'] = $eTypes['eType'][$eType]['TCEforms']['config'];
                             }
                             if ($reset) {
@@ -264,7 +257,6 @@ class ElementTypesRenderer implements SingletonInterface
                         case 'input_g':
                             /* preserve previous config, if of the right kind */
                             if ($reset || ($elArray[$key]['TCEforms']['config']['type'] !== 'input')) {
-                                $elArray[$key]['TCEforms']['label'] = $elArray[$key]['tx_templavoila']['title'];
                                 $elArray[$key]['TCEforms']['config'] = $eTypes['eType'][$eType]['TCEforms']['config'];
                             }
 
@@ -335,7 +327,6 @@ class ElementTypesRenderer implements SingletonInterface
                         default:
                             /* preserve previous config, if of the right kind */
                             if ($reset || ($elArray[$key]['TCEforms']['config']['type'] !== 'text')) {
-                                $elArray[$key]['TCEforms']['label'] = $elArray[$key]['tx_templavoila']['title'];
                                 $elArray[$key]['TCEforms']['config'] = $eTypes['eType'][$eType]['TCEforms']['config'];
                             }
                             if ($reset || !trim($elArray[$key]['tx_templavoila']['TypoScript'])) {
