@@ -688,6 +688,12 @@ class ElementController extends AbstractModuleController implements Configurable
         if (is_array($inDS)) {
             $this->convertTceFormStringToArrayRecursive($inDS);
 
+            //allow removing items from config, which would be prevented by merging old and new one
+            $configPath = str_replace(['[', ']'], ['/', ''], trim($DS_element, '[')) . '/TCEforms/config';
+            if (ArrayUtility::isValidPath($dataStructure, $configPath)) {
+                $dataStructure = ArrayUtility::removeByPath($dataStructure, $configPath);
+            }
+
             ArrayUtility::mergeRecursiveWithOverrule($dataStructure, $inDS);
 
             $this->streamlineStructureRecursive($dataStructure);
