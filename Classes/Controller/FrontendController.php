@@ -650,7 +650,7 @@ class FrontendController extends AbstractPlugin
             $this->frontendController->register['tx_templavoila_pi1.current_field'] = $key;
 
             // Array/Section:
-            if ($DSelements[$key]['type'] === 'array') {
+            if ($DSelements[$key]['type'] === 'array' || $DSelements[$key]['tx_templavoila']['type'] === 'array') {
                 /* no DS-childs: bail out
                  * no EL-childs: progress (they may all be TypoScript elements without visual representation)
                  */
